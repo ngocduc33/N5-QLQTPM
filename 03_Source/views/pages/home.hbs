@@ -1,0 +1,175 @@
+<section class="banner-section">
+    <div class="banner-bg bg_img bg-fixed" data-background="/images/banner/banner01.jpg"></div>
+    <div class="container">
+        <div class="banner-content">
+            <h1 class="title bold">
+                mua vé <span class="color-theme">xem phim</span> trực
+                tuyến
+            </h1>
+            <p>
+                mua trước vé xem phim, tìm thời gian chiếu phim, xem
+                trailer, đọc đánh giá phim và hơn thế nữa
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="search-ticket-section padding-top pt-lg-0">
+    <div class="container">
+        <div class="search-tab bg_img" data-background="/images/ticket/ticket-bg01.jpg">
+            <div class="row align-items-center mb--20">
+                <div class="col-lg-6 mb-20">
+                    <div class="search-ticket-header">
+                        <h6 class="category">
+                            chào mừng bạn đến với {{appName}}!
+                        </h6>
+                        <h3 class="title">bạn đang tìm phim gì?</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <ul class="tab-menu ticket-tab-menu">
+                        <li class="active">
+                            <span>phim / cụm rạp</span>
+                        </li>
+                        <li>
+                            <span>rạp / cụm rạp</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-area">
+                <div class="tab-item active">
+                    <form class="ticket-search-form" autocomplete="off" action="/search">
+                        <div class="col-lg-5 col-md-7 form-group">
+                            <div class="thumb">
+                                <img src="/images/ticket/cinema.png" alt="cinema" />
+                            </div>
+                            <span class="type">cụm rạp</span>
+                            <select id="cinema-select" class="select-bar cinemas" name="cinema">
+                                {{#each cinemas}}
+                                    <option value="{{this.unsignedName}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-lg-7 col-md-5 form-group">
+                            <input id="searchInput" type="text" placeholder="Nhập tên phim" name="movie" />
+                            <small id="searchResponse" class="form-text text-danger">{{searchResponse}}</small>
+                            <button type="button" data-toggle="tooltip" data-placement="top"
+                                title="Chỉ cho phép tìm kiếm có dấu, không phân biệt chữ hoa, thường.">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-item">
+                    <form class="ticket-search-form" autocomplete="off" action="/search">
+                        <div class="col-lg-5 col-md-5 col-sm-6 form-group">
+                            <div class="thumb">
+                                <img src="/images/ticket/cinema.png" alt="cinema" />
+                            </div>
+                            <span class="type">cụm rạp</span>
+                            <select id="cinema-select2" class="select-bar cinemas2" name="cinema2">
+                                {{#each cinemas}}
+                                    <option value="{{this.unsignedName}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-sm-6 form-group">
+                            <div class="thumb">
+                                <img src="/images/ticket/room.png" alt="room2">
+                            </div>
+                            <span class="type">rạp</span>
+                            <select id="room-select2" class="select-bar rooms2" name="room2">
+                                {{#each rooms}}
+                                    <option value="{{this.id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-12 form-group">
+                            <div></div>
+                            <div></div>
+                            <button type="submit" class="searchSubmit2">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="movie-section padding-top padding-bottom">
+    <div class="container">
+        <div class="row flex-wrap-reverse justify-content-center">
+            <div class="col-lg-12 mb-50 mb-lg-0">
+                <div class="tab">
+                    <div class="section-header-1">
+                        <h2 class="title">mới công chiếu</h2>
+                        <a class="view-all" href="/movie">xem tất cả</a>
+                    </div>
+                    <div class="tab-area">
+                        <div>
+                            <div class="mb-50 justify-content-center">
+                                <div class="owl-carousel owl-theme tab-slider">
+                                    {{#each newMovies}}
+                                        <div class="item">
+                                            <div class="movie-grid">
+                                                <div class="movie-thumb c-thumb">
+                                                    <a href="/movie/{{this.unsignedName}}">
+                                                        <img src="/images/movie/poster/poster-{{this.image}}.jpg"
+                                                            alt="poster" />
+                                                    </a>
+                                                </div>
+                                                <div class="movie-content">
+                                                    <h5 class="title m-0">
+                                                        <a href="/movie/{{this.unsignedName}}">{{this.name}}</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab">
+                    <div class="section-header-1">
+                        <h2 class="title">xem nhiều nhất</h2>
+                        <a class="view-all" href="/movie">xem tất cả</a>
+                    </div>
+                    <div class="tab-area">
+                        <div>
+                            <div class="mb-10 justify-content-center">
+                                <div class="owl-carousel owl-theme tab-slider">
+                                    {{#each popMovies}}
+                                        <div class="item">
+                                            <div class="movie-grid">
+                                                <div class="movie-thumb c-thumb">
+                                                    <a href="/movie/{{this.unsignedName}}">
+                                                        <img src="/images/movie/poster/poster-{{this.image}}.jpg"
+                                                            alt="poster" />
+                                                    </a>
+                                                </div>
+                                                <div class="movie-content">
+                                                    <h5 class="title m-0">
+                                                        <a href="/movie/{{this.unsignedName}}">{{this.name}}</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,62 @@
+<header class="header-section">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/logo/logo.png" alt="logo" />
+                </a>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="/" class="nav-header" data-value="">trang chủ</a>
+                </li>
+                <li>
+                    <a href="/movie" class="nav-header" data-value="movie">phim</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-header" data-value="cinema">hệ thống rạp phim</a>
+                    <ul class="submenu">
+                        {{#each cinemas}}
+                            <li>
+                                <a href="/cinema/{{this.unsignedName}}">{{this.name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </li>
+                <li class="header-button pr-0">
+                    {{#if user}}
+                        {{#ifEqual user.userType 0}}
+                            <a class="truncated">
+                                {{#if ../user.name}}
+                                    {{../user.name}}
+                                {{else}}
+                                    {{../user.email}}
+                                {{/if}}
+                            </a>
+                    {{else}}
+                        <a class="truncated">
+                            <img src="{{../user.avatar}}" alt="avatar">
+                            {{../user.name}}
+                        </a>
+                        {{/ifEqual}}
+                        <ul class="submenu">
+                            <li>
+                                <a href="/personal">thông tin tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="/logout">đăng xuất</a>
+                            </li>
+                        </ul>
+                    {{else}}
+                        <a href="/login">đăng nhập</a>
+                    {{/if}}
+                </li>
+            </ul>
+            <div class="header-bar d-lg-none">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>

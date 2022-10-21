@@ -1,0 +1,57 @@
+<div class="breadcrumbbar">
+    <div class="row align-items-center">
+        <div class="col-md-12 col-lg-12">
+            <h4 class="page-title">Thống kê</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <form id="stasticalForm">
+                <div class="widgetbar mb-30" style="display: flex; justify-content: flex-end; text-align: left">
+                    <div class="mr-2">
+                        <select class="custom-select" id="inputStasType" name="inputStasType">
+                            <option value="">Chọn loại</option>
+                            <option value="1" selected>Phim</option>
+                            <option value="2">Cụm rạp</option>
+                        </select>
+                    </div>
+                    <div class="mr-2">
+                        <select class="custom-select" id="inputStasObj" name="inputStasObj">
+                            <option value="" selected>Chọn phim</option>
+                            {{#each selectLists.movies}}
+                                <option value="{{this.id}}" {{#ifEqual this.id 1}}selected{{/ifEqual}}>{{this.name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="mr-2">
+                        <input type="date" class="form-control" name="inputDateFrom" id="inputDateFrom">
+                    </div>
+                    <div class="mr-4">
+                        <input type="date" class="form-control" name="inputDateTo" id="inputDateTo">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Thống kê</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="contentbar">
+    <div class="row">
+        <div id="text" class="col-lg-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title">Biểu đồ</h5>
+                </div>
+                <div class="card-body">
+                    <div id="apex-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

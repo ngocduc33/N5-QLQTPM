@@ -1,0 +1,102 @@
+<section class="speaker-banner bg_img" data-background="/images/banner/banner07.jpg">
+    <div class="container">
+        <div class="speaker-banner-content">
+            <h2 class="title">thông tin tài khoản</h2>
+        </div>
+    </div>
+</section>
+
+<section class="speaker-single padding-top pt-lg-0">
+    <div class="container">
+        <div class="speaker-wrapper bg-six padding-top padding-bottom">
+            <div class="speaker-content">
+                <form id="personal-form" autocomplete="off">
+                    <div class="author">
+                        <div class="d-flex justify-content-between">
+                            <h2 class="title" style="display: flex">
+                                <span class="map-content">
+                                    {{#if user.name}}
+                                        {{user.name}}
+                                    {{else}}
+                                        {{user.email}}
+                                    {{/if}}
+                                </span>
+                                <i id="fullName" class="fas fa-edit edit ml-2" style="font-size:16px"></i>
+                            </h2>
+                            <input data-map="fullName" type="text" class="edit-input pr-2" maxlength="32">
+                        </div>
+                    </div>
+                    <div class="speak-con-wrapper">
+                        <div class="speak-con-area">
+                            <div class="item">
+                                <div class="item-thumb d-flex align-items-center">
+                                    <img src="/images/personal/icon/email-line.png" alt="email" />
+                                </div>
+                                <div class="item-content email">
+                                    <span class="up text-left">email:</span>
+                                    <span class="up">{{user.email}}</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-content tel">
+                                    <span class="up text-right">số điện thoại:</span>
+                                    <span class="up align-items-center" style="display: flex">
+                                        <i id="phone" class="fas fa-edit edit mr-2"></i>
+                                        <span class="map-content">{{user.phone}}</span>
+                                        {{#unless user.phone}}
+                                            <span id='phone-empty'>chưa cập nhật</span>
+                                        {{/unless}}
+                                    </span>
+                                    <span class="up align-items-center" style="display: flex">
+                                        <input data-map="phone" type="tel" class="edit-input pr-2" maxlength="10"
+                                            oninput=" this.value=this.value.replace(/[^0-9.]/g, ''
+                                        ).replace(/(\..*)\./g, '$1' );">
+                                    </span>
+                                </div>
+                                <div class="item-thumb d-flex align-items-center">
+                                    <img src="/images/personal/icon/phone-line.png" alt="phone" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{#ifEqual user.userType 0}}
+                    <a href="/personal/change-password" class="custom-button" target="_blank">thay đổi mật khẩu</a>
+                {{/ifEqual}}
+                <div class="content">
+                    <div class="blog-comment">
+                        <h5 class="title">lịch sử mua vé</h5>
+                        {{#if bookings}}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>mã</th>
+                                        <th>ngày mua</th>
+                                        <th>tên phim</th>
+                                        <th>suất chiếu</th>
+                                        <th>số lượng vé</th>
+                                        <th>tổng thanh toán</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each bookings}}
+                                        <tr>
+                                            <th scope="row">{{this.id}}</th>
+                                            <td>{{formatDate this.bookingTime 'vi' 'lll'}}</td>
+                                            <td>{{this.ShowTime.Movie.name}}</td>
+                                            <td>{{formatDate this.time 'vi' 'lll'}}</td>
+                                            <td>{{arrayCount this.Tickets}}</td>
+                                            <td>{{formatCurrency this.pay 'vi' 'VND'}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        {{else}}
+                            <p class="text-center padding-top">chưa có lịch sử mua vé</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
